@@ -1,0 +1,28 @@
+{
+  "name": "net-positive-memory-mcp",
+  "version": "0.1.1",
+  "description": "Token-aware markdown memory engine for Claude, served over MCP and packaged as a .mcpb Desktop Extension.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Net Positive (net-positive.uk)",
+  "homepage": "https://github.com/dave-net-positive/net-positive-memory",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dave-net-positive/net-positive-memory.git"
+  },
+  "scripts": {
+    "test": "node tests/test_store.js",
+    "bundle": "esbuild src/index.js --bundle --platform=node --format=cjs --target=node18 --outfile=build/server/index.cjs --legal-comments=none",
+    "build": "node scripts/build.mjs",
+    "e2e": "npm run bundle && node tests/e2e.js",
+    "pack": "mcpb pack dist ../net-positive-memory.mcpb"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "yaml": "^2.5.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.23.0"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "manifest_version": "0.3",
+  "name": "net-positive-memory",
+  "display_name": "Net Positive Memory",
+  "version": "0.1.1",
+  "description": "A memory Claude carries between chats, stored as plain markdown notes in a folder you choose.",
+  "long_description": "Net Positive Memory gives Claude a persistent, token-aware memory backed by plain markdown files. Every memory is an ordinary note with a one-line summary and simple tags; links between notes ([[wikilinks]]) form a knowledge graph Claude can walk. Because the notes are just files in a folder you pick, you own them outright: read or edit them in any text editor or in Obsidian, sync them across devices, or delete them at any time. Nothing leaves your machine. Claude searches and reads only the few notes it needs rather than loading everything, so memory stays cheap as it grows.",
+  "author": {
+    "name": "Net Positive",
+    "url": "https://net-positive.uk"
+  },
+  "homepage": "https://net-positive.uk",
+  "license": "MIT",
+  "icon": "icon.png",
+  "keywords": ["memory", "markdown", "notes", "knowledge-graph", "obsidian"],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.cjs",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.cjs"],
+      "env": {
+        "MEMORY_PATH": "${user_config.memory_path}",
+        "MEMORY_WATCH": "${user_config.live_watch}"
+      }
+    }
+  },
+  "user_config": {
+    "memory_path": {
+      "type": "directory",
+      "title": "Memory folder",
+      "description": "Where your notes are stored. Pick an empty folder, or make a new one; Claude will set it up the first time. Tip: a folder inside a synced drive (iCloud, OneDrive, Dropbox) keeps your memory on every device.",
+      "required": true,
+      "default": "${HOME}/Net Positive Memory"
+    },
+    "live_watch": {
+      "type": "boolean",
+      "title": "Watch the folder for outside edits",
+      "description": "Update instantly when you change notes in another app such as Obsidian. Leaving this off is fine; Claude re-reads on every use anyway.",
+      "required": false,
+      "default": false
+    }
+  },
+  "tools": [
+    { "name": "vault_read", "description": "Read one note." },
+    { "name": "vault_list", "description": "List notes and folders." },
+    { "name": "vault_write", "description": "Create a note." },
+    { "name": "vault_append", "description": "Add text to a note." },
+    { "name": "vault_patch", "description": "Replace one section or field in place." },
+    { "name": "vault_delete", "description": "Delete a note (checks backlinks first)." },
+    { "name": "vault_search", "description": "Find notes by fields and text." },
+    { "name": "tag_list", "description": "List all tags with counts." },
+    { "name": "graph_neighbours", "description": "Notes linked near a note." },
+    { "name": "graph_path", "description": "Shortest link path between two notes." },
+    { "name": "graph_subgraph", "description": "The cluster around a note or tag." },
+    { "name": "graph_backlinks", "description": "Notes that link to a note." },
+    { "name": "vault_reindex", "description": "Rebuild the index after bulk edits." }
+  ],
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

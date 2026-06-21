@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build output
+engine/build/
+engine/dist/
+*.mcpb
+
+# Visualiser output
+viz/*.html
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log

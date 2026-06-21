@@ -1,0 +1,11 @@
+{
+  "name": "net-positive-memory",
+  "description": "Net Positive Memory: the discipline layer for Claude's markdown memory. Teaches Claude when to record memory and how to retrieve it cheaply, without flooding context. Pairs with the Net Positive Memory engine (installed separately as a .mcpb Desktop Extension), which provides the vault_* and graph_* tools.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Net Positive",
+    "url": "https://net-positive.uk"
+  },
+  "homepage": "https://net-positive.uk",
+  "license": "MIT"
+}
