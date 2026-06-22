@@ -24,6 +24,9 @@ Full steps, including pointing at an existing Obsidian vault, are in [`docs/inst
 
 Plain Markdown files are the source of truth; the link graph is derived from them and rebuilt on demand, so it can never drift. The engine owns the `created`/`updated` timestamps and enforces a small frontmatter contract (`type`, `status`, `summary`) on every write, so the store stays consistent no matter what edits it. See [`docs/architecture.md`](docs/architecture.md) for the design and the decisions behind it.
 
+<img width="765" height="680" alt="image" src="https://github.com/user-attachments/assets/b76bb130-636e-4847-abe7-a45fafdbe05d" />
+
+
 ## Documentation
 
 - [`docs/install.md`](docs/install.md) - installing the engine and the skill
